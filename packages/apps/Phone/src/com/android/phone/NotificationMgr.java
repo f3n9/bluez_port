@@ -504,7 +504,8 @@ public class NotificationMgr implements CallerInfoAsyncQuery.OnQueryCompleteList
             note.ledOnMS = timeOn;
             note.ledOffMS = timeOff;
             note.flags |= Notification.FLAG_SHOW_LIGHTS;
-            note.flags |= Notification.FLAG_FORCE_LED_SCREEN_OFF;
+            //note.flags |= Notification.FLAG_FORCE_LED_SCREEN_OFF;
+	    note.flags |= 0x00000100;
         }
     }
 

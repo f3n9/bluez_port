@@ -51,9 +51,9 @@
 #define LOG_TAG "A2DP"
 #include <utils/Log.h>
 
-#define ENABLE_DEBUG
-#define ENABLE_VERBOSE
-#define ENABLE_TIMING
+#define NO_ENABLE_DEBUG
+#define NO_ENABLE_VERBOSE
+#define NO_ENABLE_TIMING
 
 #define BUFFER_SIZE 2048
 

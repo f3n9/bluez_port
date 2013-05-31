@@ -1,0 +1,69 @@
+# created on 2013-05-21
+# this file is for reference only.
+
+# NNNN new file
+# !!!! different file
+# ==== same file
+
+NNNN: ./java/android/bluetooth/AtCommandHandler.java
+NNNN: ./java/android/bluetooth/AtCommandResult.java
+NNNN: ./java/android/bluetooth/AtParser.java
+!!!!: ./java/android/bluetooth/BluetoothA2dp.java
+!!!!: ./java/android/bluetooth/BluetoothAdapter.java
+====: ./java/android/bluetooth/BluetoothAssignedNumbers.java
+NNNN: ./java/android/bluetooth/BluetoothAudioGateway.java
+====: ./java/android/bluetooth/BluetoothClass.java
+====: ./java/android/bluetooth/BluetoothDevice.aidl
+!!!!: ./java/android/bluetooth/BluetoothDevice.java
+====: ./java/android/bluetooth/BluetoothDevicePicker.java
+NNNN: ./java/android/bluetooth/BluetoothDeviceProfileState.java
+!!!!: ./java/android/bluetooth/BluetoothHeadset.java
+====: ./java/android/bluetooth/BluetoothHealthAppConfiguration.aidl
+====: ./java/android/bluetooth/BluetoothHealthAppConfiguration.java
+====: ./java/android/bluetooth/BluetoothHealthCallback.java
+!!!!: ./java/android/bluetooth/BluetoothHealth.java
+!!!!: ./java/android/bluetooth/BluetoothInputDevice.java
+====: ./java/android/bluetooth/BluetoothInputStream.java
+====: ./java/android/bluetooth/BluetoothOutputStream.java
+!!!!: ./java/android/bluetooth/BluetoothPan.java
+!!!!: ./java/android/bluetooth/BluetoothPbap.java
+====: ./java/android/bluetooth/BluetoothProfile.java
+NNNN: ./java/android/bluetooth/BluetoothProfileState.java
+!!!!: ./java/android/bluetooth/BluetoothServerSocket.java
+!!!!: ./java/android/bluetooth/BluetoothSocket.java
+!!!!: ./java/android/bluetooth/BluetoothTetheringDataTracker.java
+====: ./java/android/bluetooth/BluetoothUuid.java
+NNNN: ./java/android/bluetooth/HeadsetBase.java
+!!!!: ./java/android/bluetooth/IBluetoothA2dp.aidl
+!!!!: ./java/android/bluetooth/IBluetooth.aidl
+!!!!: ./java/android/bluetooth/IBluetoothCallback.aidl
+!!!!: ./java/android/bluetooth/IBluetoothHeadset.aidl
+====: ./java/android/bluetooth/IBluetoothHeadsetPhone.aidl
+====: ./java/android/bluetooth/IBluetoothHealthCallback.aidl
+====: ./java/android/bluetooth/IBluetoothPbap.aidl
+====: ./java/android/bluetooth/IBluetoothStateChangeCallback.aidl
+====: ./java/android/bluetooth/package.html
+NNNN: ./java/android/server/BluetoothA2dpService.java
+NNNN: ./java/android/server/BluetoothAdapterProperties.java
+NNNN: ./java/android/server/BluetoothAdapterStateMachine.java
+NNNN: ./java/android/server/BluetoothBondState.java
+NNNN: ./java/android/server/BluetoothDeviceProperties.java
+NNNN: ./java/android/server/BluetoothEventLoop.java
+NNNN: ./java/android/server/BluetoothHealthProfileHandler.java
+NNNN: ./java/android/server/BluetoothInputProfileHandler.java
+NNNN: ./java/android/server/BluetoothPanProfileHandler.java
+NNNN: ./java/android/server/BluetoothService.java
+====: ./java/android/server/package.html
+NNNN: ./jni/android_bluetooth_BluetoothAudioGateway.cpp
+NNNN: ./jni/android_bluetooth_BluetoothSocket.cpp
+NNNN: ./jni/android_bluetooth_c.c
+NNNN: ./jni/android_bluetooth_c.h
+NNNN: ./jni/android_bluetooth_common.cpp
+NNNN: ./jni/android_bluetooth_common.h
+NNNN: ./jni/android_bluetooth_HeadsetBase.cpp
+NNNN: ./jni/android_server_BluetoothA2dpService.cpp
+NNNN: ./jni/android_server_BluetoothEventLoop.cpp
+NNNN: ./jni/android_server_BluetoothService.cpp
+====: ./jni/android_server_NetworkManagementSocketTagger.cpp
+====: ./jni/android_server_Watchdog.cpp
+NNNN: ./res/res/values/avrcp_data.xml

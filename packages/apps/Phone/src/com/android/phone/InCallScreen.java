@@ -515,7 +515,7 @@ public class InCallScreen extends Activity
             if (DBG) log("onCreate(): this is our very first launch, checking intent...");
             internalResolveIntent(getIntent());
         }
-
+	resetSpeaker();
         Profiler.callScreenCreated();
         if (DBG) log("onCreate(): exit");
     }
@@ -2837,6 +2837,14 @@ public class InCallScreen extends Activity
         // button might need to change its appearance based on the new
         // audio state.)
         updateInCallTouchUi();
+    }
+
+    public void resetSpeaker() {
+        if (! isBluetoothAvailable() || ! isBluetoothAudioConnected()) {
+            disconnectBluetoothAudio();
+	    PhoneUtils.turnOnSpeaker(this, PhoneUtils.isSpeakerOn(this), true);
+	    updateInCallTouchUi();
+        }
     }
 
     /*
