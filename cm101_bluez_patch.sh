@@ -20,21 +20,24 @@ rm -rf $DSTDIR/external/bluetooth/*
 echo "[external/bluetooth] adding bluez, glib and hcidump"
 cp -r $SRCDIR/external/bluetooth/* $DSTDIR/external/bluetooth/
 
-# packages/apps: 1. replace Phone and Bluetooth; 
+# packages/apps: 1. replace Bluetooth; 
 #                2. replace Settings/src/com/android/settings/bluetooth
-echo "[packages/apps] removing Bluetooth and Phone"
+#                3. patch Phone
+echo "[packages/apps] removing Bluetooth"
 rm -rf $DSTDIR/packages/apps/Bluetooth
-rm -rf $DSTDIR/packages/apps/Phone
+
+echo "[packages/apps] adding Bluetooth"
+cp -r $SRCDIR/packages/apps/Bluetooth $DSTDIR/packages/apps/
 
 echo "[packages/apps] removing Settings/src/com/android/settings/bluetooth"
 rm -rf $DSTDIR/packages/apps/Settings/src/com/android/settings/bluetooth
 
-echo "[packages/apps] adding Bluetooth and Phone"
-cp -r $SRCDIR/packages/apps/Bluetooth $DSTDIR/packages/apps/
-cp -r $SRCDIR/packages/apps/Phone $DSTDIR/packages/apps/
-
 echo "[packages/apps] adding Settings/src/com/android/settings/bluetooth"
 cp -r $SRCDIR/packages/apps/Settings/src/com/android/settings/bluetooth $DSTDIR/packages/apps/Settings/src/com/android/settings/
+
+echo "[packages/apps] patching Phone"
+cat $SRCDIR/patches/Phone.patch | patch -d $DSTDIR/packages/apps/Phone -p1 -N -r - -s
+
 
 # frameworks/base:
 #           1. merge core/java/android/bluetooth/
