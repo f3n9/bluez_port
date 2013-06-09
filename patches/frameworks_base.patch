@@ -1,4 +1,4 @@
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/Android.mk	2013-05-21 12:33:00.856085892 +0800
+--- Android.mk	2013-05-21 12:33:00.856085892 +0800
 +++ Android.mk	2013-05-21 12:18:35.793073419 +0800
 @@ -91,12 +91,7 @@
  	core/java/android/bluetooth/IBluetoothCallback.aidl \
@@ -13,7 +13,7 @@
  	core/java/android/bluetooth/IBluetoothPbap.aidl \
  	core/java/android/bluetooth/IBluetoothStateChangeCallback.aidl \
  	core/java/android/content/IClipboard.aidl \
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/core/java/com/android/internal/util/StateMachine.java	2013-05-21 12:33:00.915084810 +0800
+--- core/java/com/android/internal/util/StateMachine.java	2013-05-21 12:33:00.915084810 +0800
 +++ core/java/com/android/internal/util/StateMachine.java	2013-05-14 12:21:45.000000000 +0800
 @@ -423,7 +423,7 @@
      private String mName;
@@ -42,7 +42,7 @@
          // mSmHandler can be null if the state machine is already stopped.
          if (mSmHandler == null) return;
  
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/core/jni/Android.mk	2013-05-21 12:33:00.916084792 +0800
+--- core/jni/Android.mk	2013-05-21 12:33:00.916084792 +0800
 +++ core/jni/Android.mk	2013-05-14 12:21:45.000000000 +0800
 @@ -138,6 +138,14 @@
  	android_util_FileObserver.cpp \
@@ -74,7 +74,7 @@
  ifeq ($(HAVE_SELINUX),true)
  LOCAL_C_INCLUDES += external/libselinux/include
  LOCAL_SHARED_LIBRARIES += libselinux
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/core/jni/AndroidRuntime.cpp	2013-05-21 12:33:00.917084773 +0800
+--- core/jni/AndroidRuntime.cpp	2013-05-21 12:33:00.917084773 +0800
 +++ core/jni/AndroidRuntime.cpp	2013-05-14 12:21:45.000000000 +0800
 @@ -149,6 +149,14 @@
  extern int register_android_text_AndroidCharacter(JNIEnv *env);
@@ -105,7 +105,7 @@
      REG_JNI(register_android_server_NetworkManagementSocketTagger),
      REG_JNI(register_android_server_Watchdog),
      REG_JNI(register_android_ddm_DdmHandleNativeHeap),
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/core/res/res/values/config.xml	2013-05-21 12:33:00.943084294 +0800
+--- core/res/res/values/config.xml	2013-05-21 12:33:00.943084294 +0800
 +++ core/res/res/values/config.xml	2013-05-21 12:18:30.112179305 +0800
 @@ -672,6 +672,7 @@
      <!-- Boolean indicating if current platform supports bluetooth SCO for off call
@@ -115,7 +115,7 @@
  
      <!-- Boolean indicating if current platform supports bluetooth wide band
           speech -->
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/core/res/res/values/symbols.xml	2013-05-21 12:33:00.967083850 +0800
+--- core/res/res/values/symbols.xml	2013-05-21 12:33:00.967083850 +0800
 +++ core/res/res/values/symbols.xml	2013-05-21 12:18:23.443303608 +0800
 @@ -1836,6 +1836,20 @@
     =============================================================== -->
@@ -138,7 +138,7 @@
    <!-- Config.xml entries -->
    <java-symbol type="bool" name="config_forceDisableHardwareKeyboard" />
    <java-symbol type="bool" name="config_hasRotationLockSwitch" />
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/services/java/com/android/server/NetworkManagementService.java	2013-05-21 12:33:01.003083186 +0800
+--- services/java/com/android/server/NetworkManagementService.java	2013-05-21 12:33:01.003083186 +0800
 +++ services/java/com/android/server/NetworkManagementService.java	2013-05-14 12:21:45.000000000 +0800
 @@ -851,7 +851,8 @@
          } catch (NativeDaemonConnectorException e) {
@@ -159,7 +159,7 @@
      }
  
      @Override
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/services/java/com/android/server/power/ShutdownThread.java	2013-05-21 12:33:01.016082946 +0800
+--- services/java/com/android/server/power/ShutdownThread.java	2013-05-21 12:33:01.016082946 +0800
 +++ services/java/com/android/server/power/ShutdownThread.java	2013-05-14 12:21:45.000000000 +0800
 @@ -24,7 +24,7 @@
  import android.app.KeyguardManager;
@@ -184,7 +184,7 @@
  
                  try {
                      nfcOff = nfc == null ||
---- /mnt/Data/Extra/huawei/android/cm101/frameworks/base/services/java/com/android/server/SystemServer.java	2013-05-21 12:33:01.016082946 +0800
+--- services/java/com/android/server/SystemServer.java	2013-05-21 12:33:01.016082946 +0800
 +++ services/java/com/android/server/SystemServer.java	2013-05-21 12:18:17.128421316 +0800
 @@ -43,6 +43,10 @@
  import android.os.SystemProperties;
