@@ -1,6 +1,8 @@
 #!/bin/bash
 SRCDIR=`dirname $0`
 DSTDIR=$1
+NEWPATCH=1
+
 
 if [ -z "$DSTDIR" ]
 then
@@ -36,9 +38,14 @@ echo "[packages/apps] adding Settings/src/com/android/settings/bluetooth"
 cp -r $SRCDIR/packages/apps/Settings/src/com/android/settings/bluetooth $DSTDIR/packages/apps/Settings/src/com/android/settings/
 
 echo "[packages/apps] patching Phone"
-cat $SRCDIR/patches/Phone.patch | patch -d $DSTDIR/packages/apps/Phone -p1 -N -r - -s
+cat $SRCDIR/patches/Phone_all2.patch | patch -d $DSTDIR/packages/apps/Phone -p1 -N -r - -s
 
 
+if [ "$NEWPATCH" = "1" ]
+then
+    echo "[frameworks/base] applying patch frameworks_base_all2.patch"
+    cat $SRCDIR/patches/frameworks_base_all2.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r - -s
+else
 # frameworks/base:
 #           1. merge core/java/android/bluetooth/
 #           2. merge core/java/android/server/
@@ -56,11 +63,12 @@ cat $SRCDIR/patches/Phone.patch | patch -d $DSTDIR/packages/apps/Phone -p1 -N -r
 #                   services/java/com/android/server/power/ShutdownThread.java
 #                   services/java/com/android/server/SystemServer.java
 
-echo "[frameworks/base] merging core"
-cp -r $SRCDIR/frameworks/base/core $DSTDIR/frameworks/base/
-echo "[frameworks/base] removing services/java/com/android/server/BluetoothManagerService.java"
-rm -f $DSTDIR/frameworks/base/services/java/com/android/server/BluetoothManagerService.java
-echo "[frameworks/base] applying patch frameworks_base.patch"
-cat $SRCDIR/patches/frameworks_base.patch | patch -d $DSTDIR/frameworks/base -p0 -N -r - -s
+    echo "[frameworks/base] merging core"
+    cp -r $SRCDIR/frameworks/base/core $DSTDIR/frameworks/base/
+    echo "[frameworks/base] removing services/java/com/android/server/BluetoothManagerService.java"
+    rm -f $DSTDIR/frameworks/base/services/java/com/android/server/BluetoothManagerService.java
+    echo "[frameworks/base] applying patch frameworks_base.patch"
+    cat $SRCDIR/patches/frameworks_base.patch | patch -d $DSTDIR/frameworks/base -p0 -N -r - -s
+fi
 
 echo "Done"
