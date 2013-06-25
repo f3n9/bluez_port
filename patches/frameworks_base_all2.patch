@@ -1967,7 +1967,7 @@ index 74d50f1..4f8d53a 100644
  
 diff --git a/core/java/android/bluetooth/BluetoothDeviceProfileState.java b/core/java/android/bluetooth/BluetoothDeviceProfileState.java
 new file mode 100644
-index 0000000..c9603bf
+index 0000000..8763893
 --- /dev/null
 +++ b/core/java/android/bluetooth/BluetoothDeviceProfileState.java
 @@ -0,0 +1,1349 @@
@@ -2265,7 +2265,7 @@ index 0000000..c9603bf
 +        public PbapServiceListener() {
 +            mPbapService = new BluetoothPbap(mContext, this);
 +        }
-+        public void onServiceConnected() {
++        public void onServiceConnected(BluetoothPbap proxy) {
 +            synchronized(BluetoothDeviceProfileState.this) {
 +                mPbapServiceConnected = true;
 +            }
@@ -4472,7 +4472,7 @@ index e25ec86..a01a3a0 100644
         if (mAdapter.getState() == BluetoothAdapter.STATE_ON) return true;
         return false;
 diff --git a/core/java/android/bluetooth/BluetoothPbap.java b/core/java/android/bluetooth/BluetoothPbap.java
-index b5280e5..6b3e85f 100644
+index b5280e5..f3da9b4 100644
 --- a/core/java/android/bluetooth/BluetoothPbap.java
 +++ b/core/java/android/bluetooth/BluetoothPbap.java
 @@ -71,7 +71,6 @@ public class BluetoothPbap {
@@ -4483,15 +4483,6 @@ index b5280e5..6b3e85f 100644
  
      /** There was an error trying to obtain the state */
      public static final int STATE_ERROR        = -1;
-@@ -98,7 +97,7 @@ public class BluetoothPbap {
-          * this callback before making IPC calls on the BluetoothPbap
-          * service.
-          */
--        public void onServiceConnected(BluetoothPbap proxy);
-+        public void onServiceConnected();
- 
-         /**
-          * Called to notify the client that this proxy object has been
 @@ -110,54 +109,12 @@ public class BluetoothPbap {
          public void onServiceDisconnected();
      }
@@ -4576,15 +4567,6 @@ index b5280e5..6b3e85f 100644
          }
          mServiceListener = null;
      }
-@@ -300,7 +241,7 @@ public class BluetoothPbap {
-             if (DBG) log("Proxy object connected");
-             mService = IBluetoothPbap.Stub.asInterface(service);
-             if (mServiceListener != null) {
--                mServiceListener.onServiceConnected(BluetoothPbap.this);
-+                mServiceListener.onServiceConnected();
-             }
-         }
-         public void onServiceDisconnected(ComponentName className) {
 diff --git a/core/java/android/bluetooth/BluetoothProfileState.java b/core/java/android/bluetooth/BluetoothProfileState.java
 new file mode 100644
 index 0000000..b0c0a0b
@@ -11048,7 +11030,7 @@ index 0000000..41bb87f
 +    }
 +}
 diff --git a/core/java/android/server/BluetoothService.java b/core/java/android/server/BluetoothService.java
-new file mode 100755
+new file mode 100644
 index 0000000..dfc14a0
 --- /dev/null
 +++ b/core/java/android/server/BluetoothService.java
@@ -21106,26 +21088,26 @@ index ab735e9..8f0b2ed 100644
      <!-- Boolean indicating if current platform supports bluetooth wide band
           speech -->
 diff --git a/core/res/res/values/symbols.xml b/core/res/res/values/symbols.xml
-index 0ff9036..68f11a4 100644
+index 3679acb..2482b57 100644
 --- a/core/res/res/values/symbols.xml
 +++ b/core/res/res/values/symbols.xml
 @@ -1836,6 +1836,20 @@
     =============================================================== -->
    <eat-comment />
  
-+   <java-symbol type="bool" name="config_bluetooth_adapter_quick_switch" />
-+   <java-symbol type="array" name="avrcp_meta_changed_intents" />
-+   <java-symbol type="array" name="avrcp_playstate_changed_intents" />
-+   <java-symbol type="array" name="avrcp_special_extra_keys" />
-+   <java-symbol type="array" name="avrcp_overridable_extra_keys" />
-+   <java-symbol type="string" name="com.amazon.mp3.metachanged_track" />
-+   <java-symbol type="string" name="com.amazon.mp3.metachanged_artist" />
-+   <java-symbol type="string" name="com.amazon.mp3.metachanged_album" />
-+   <java-symbol type="string" name="com.amazon.mp3.metachanged_id" />
-+   <java-symbol type="string" name="com.amazon.mp3.playstatechanged_track" />
-+   <java-symbol type="string" name="com.amazon.mp3.playstatechanged_artist" />
-+   <java-symbol type="string" name="com.amazon.mp3.playstatechanged_album" />
-+   <java-symbol type="string" name="com.amazon.mp3.playstatechanged_id" />
++  <java-symbol type="bool" name="config_bluetooth_adapter_quick_switch" />
++  <java-symbol type="array" name="avrcp_meta_changed_intents" />
++  <java-symbol type="array" name="avrcp_playstate_changed_intents" />
++  <java-symbol type="array" name="avrcp_special_extra_keys" />
++  <java-symbol type="array" name="avrcp_overridable_extra_keys" />
++  <java-symbol type="string" name="com.amazon.mp3.metachanged_track" />
++  <java-symbol type="string" name="com.amazon.mp3.metachanged_artist" />
++  <java-symbol type="string" name="com.amazon.mp3.metachanged_album" />
++  <java-symbol type="string" name="com.amazon.mp3.metachanged_id" />
++  <java-symbol type="string" name="com.amazon.mp3.playstatechanged_track" />
++  <java-symbol type="string" name="com.amazon.mp3.playstatechanged_artist" />
++  <java-symbol type="string" name="com.amazon.mp3.playstatechanged_album" />
++  <java-symbol type="string" name="com.amazon.mp3.playstatechanged_id" />
 +
    <!-- Config.xml entries -->
    <java-symbol type="bool" name="config_forceDisableHardwareKeyboard" />

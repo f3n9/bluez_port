@@ -16,26 +16,19 @@ cat $SRCDIR/patches/build_core.patch | patch -d $DSTDIR/build/core -p0 -N -r - -
 
 
 # external/bluetooth: 1. remove bluedroid
-#                     2. copy bluez/glib/hcidump
+#                     2. copy bluez, glib and hcidump
 echo "[external/bluetooth] removing bluedroid"
 rm -rf $DSTDIR/external/bluetooth/*
 echo "[external/bluetooth] adding bluez, glib and hcidump"
 cp -r $SRCDIR/external/bluetooth/* $DSTDIR/external/bluetooth/
 
 # packages/apps: 1. replace Bluetooth; 
-#                2. replace Settings/src/com/android/settings/bluetooth
-#                3. patch Phone
+#                2. patch Phone
 echo "[packages/apps] removing Bluetooth"
 rm -rf $DSTDIR/packages/apps/Bluetooth
 
 echo "[packages/apps] adding Bluetooth"
 cp -r $SRCDIR/packages/apps/Bluetooth $DSTDIR/packages/apps/
-
-echo "[packages/apps] removing Settings/src/com/android/settings/bluetooth"
-rm -rf $DSTDIR/packages/apps/Settings/src/com/android/settings/bluetooth
-
-echo "[packages/apps] adding Settings/src/com/android/settings/bluetooth"
-cp -r $SRCDIR/packages/apps/Settings/src/com/android/settings/bluetooth $DSTDIR/packages/apps/Settings/src/com/android/settings/
 
 echo "[packages/apps] patching Phone"
 cat $SRCDIR/patches/Phone_all2.patch | patch -d $DSTDIR/packages/apps/Phone -p1 -N -r - -s
