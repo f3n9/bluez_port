@@ -17,8 +17,9 @@ cat $SRCDIR/patches/build_core.patch | patch -d $DSTDIR/build/core -p0 -N -r - -
 
 # external/bluetooth: 1. remove bluedroid
 #                     2. copy bluez, glib and hcidump
-echo "[external/bluetooth] removing bluedroid"
-rm -rf $DSTDIR/external/bluetooth/*
+echo "[external/bluetooth] removing mk files from bluedroid"
+rm -f $DSTDIR/external/bluetooth/bluedroid/Android.mk
+rm -f $DSTDIR/external/bluetooth/bluedroid/audio_a2dp_hw/Android.mk
 echo "[external/bluetooth] adding bluez, glib and hcidump"
 cp -r $SRCDIR/external/bluetooth/* $DSTDIR/external/bluetooth/
 
